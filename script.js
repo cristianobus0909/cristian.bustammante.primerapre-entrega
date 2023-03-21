@@ -1,29 +1,20 @@
 
 //quiero saber que me alcanza para comprar en el supermercado y para eso voy a realizar un presupuesto//
-let entrada = Number(prompt("ingrese cuanto dinero tiene"))
-presupuesto = entrada
+let presupuesto = Number(prompt("Ingrese cuanto dinero tiene"));
+let total = 0;
 
-let pan = 300
-let leche = 400
-let huevos = 200
-let fideos = 500
-let arroz = 200
-let carne = 1200
-let pollo = 1000
-let yogurt = 300
-let aceite = 600
-let harina = 350
+while (total < presupuesto) {
+    let item = prompt("Ingresa el nombre del artículo que deseas comprar:");
+    let precio = parseFloat(prompt("Ingresa el precio del artículo:"));
 
-canastaBasica = (pan + leche + aceite + huevos);
-canastaMedia = (pan + leche + huevos + arroz + fideos + carne + harina);
-canastaCompleta = (pan + leche + huevos + arroz + fideos + carne + yogurt + pollo + aceite + harina);
-
-if (presupuesto <= canastaBasica){
-    alert("te alcanza para una canasta basica")
-}else if(presupuesto <=canastaMedia){
-    alert("te alcanza para una canasta media")
-}else if(presupuesto <= canastaCompleta){
-    alert("te podes comprar todo ricachon!")
-}else{
-    alert("anda a laburar que sino te vas a c... de hambre")
+    if (isNaN(precio) || precio <= 0) {
+        alert("Ingresa un precio válido.");
+    } else if (total + precio > presupuesto) {
+        alert("Lo siento, no tienes suficiente presupuesto para comprar este artículo.");
+    } else {
+        total += precio;
+        alert(`Has comprado ${item} por $${precio}. Tu total actual es de $${total}.`);
+    }
 }
+
+alert(`Has alcanzado tu presupuesto de $${presupuesto}. Tu total final es de $${total}.`);
